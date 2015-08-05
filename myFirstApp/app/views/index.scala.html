@@ -1,0 +1,18 @@
+@(userForm: Form[User])
+@import helper._
+@import helper.twitterBootstrap._ 
+
+@main("Input user info") {
+	<h1>Input user info</h1>
+
+	@helper.form(action = routes.Application.save()) {
+		<fieldset>
+			<legend>User (@userForm("User Name").valueOr("New"))</legend>
+			@helper.inputText(userForm("username"), '_label -> "User Name")
+			@helper.inputText(userForm("password"), '_label -> "Password")
+			@helper.inputText(userForm("telnumber"), '_label -> "TelNumber")
+		</fieldset>
+
+		<input type="submit" class="btn btn-primary" value="Save">
+	} 
+}
